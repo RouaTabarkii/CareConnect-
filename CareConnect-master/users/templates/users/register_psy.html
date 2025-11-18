@@ -1,0 +1,67 @@
+{% extends 'users/base.html' %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(0, 77, 128);
+            margin-top: 50px;
+            font-size: 32px;
+        }
+
+        form {
+            background: #fff;
+            padding: 50px;
+            border-radius: 70px;
+            width: 400px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgb(0, 77, 128);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background: rgb(0, 84, 211);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Inscription Psychologue</h2>
+    <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'users/base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion Patient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(0, 77, 128);
+            margin-top: 50px;
+            font-size: 30px;
+        }
+
+        form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 25px;
+            width: 320px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgb(0, 77, 128);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgb(0, 84, 211);
+        }
+
+        p.register {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        p.register a {
+            color: rgb(0, 77, 128);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p.register a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>Connexion Psychologue</h2>
+
+<form method="POST" autocomplete="off">
+    <input type="text" style="display:none">
+    <input type="password" style="display:none">
+    
+    {% csrf_token %}
+    <label for="my_email">Email :</label>
+    <input type="email" name="my_email" id="my_email" placeholder="Entrer votre email" required autocomplete="off">
+
+    <label for="my_password">Mot de passe :</label>
+    <input type="password" name="my_password" id="my_password" placeholder="Entrer votre mot de passe" required autocomplete="new-password">
+
+    <button type="submit">Se connecter</button>
+</form>
+
+
+
+<p class="register">
+    Pas encore de compte ? <a href="{% url 'register_psy' %}">Créer un compte</a>
+</p>
+
+</body>
+</html>
+
+{% endblock %}
