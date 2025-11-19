@@ -386,76 +386,16 @@
 
 <div class="dropdown" id="dropdownMenu">
     <div class="user-info">
-        <h1>{{ patient.Name }}</h1>
-        <h2>{{ patient.my_email }}</h2>
+        <h1>{{ psy.Name }}</h1>
+        <h2>{{ psy.my_email }}</h2>
     </div>
-    <a href="{% url 'Interface_patient' %}"><i class="bi bi-house-door"></i> Accueil</a>
+    <a href="{% url 'Interface_psy' %}"><i class="bi bi-house-door"></i> Accueil</a>
     <a href="{% url 'doc_patient' %}"><i class="bi bi-file-earmark-text"></i> Mes documents</a>
-    <a href="{% url 'RDV_patient' %}"><i class="bi bi-calendar-check"></i> Mes rendez-vous</a>
-    <a href="{% url 'logout_patient' %}"><i class="bi bi-box-arrow-right"></i> Déconnexion</a>
+    <a href="{% url 'confrvd' %}"><i class="bi bi-calendar-check"></i> Mes rendez-vous</a>
+    <a href="{% url 'logout_psy' %}"><i class="bi bi-box-arrow-right"></i> Déconnexion</a>
 </div>
 
-<div class="main-content">
-    <div class="dashboard-container">
-        <div class="dashboard-header">
-            <h2><i class="bi bi-calendar-check"></i> Statut de vos rendez-vous</h2>
-            <!-- <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nouveau rendez-vous</button> -->
-        </div>
 
-        <!-- <div class="appointment-status"> -->
-            <!-- <div class="status-card confirmed">
-                <div class="status-header">
-                    <div class="status-title">Consultation générale</div>
-                    <span class="status-badge badge-confirmed">Confirmé</span>
-                </div>
-                <div class="appointment-details">
-                    <p><i class="bi bi-person"></i> Dr. Martin Lambert</p>
-                    <p><i class="bi bi-calendar-event"></i> Lundi 15 mai 2023</p>
-                    <p><i class="bi bi-clock"></i> 14:30 - 15:15</p>
-                    <p><i class="bi bi-geo-alt"></i> Cabinet médical, 12 Rue de la Paix</p>
-                </div>
-                <div class="appointment-actions">
-                    <button class="btn btn-primary">Voir détails</button>
-                    <button class="btn btn-outline">Annuler</button>
-                </div>
-            </div>
-
-            <div class="status-card pending">
-                <div class="status-header">
-                    <div class="status-title">Examen sanguin</div>
-                    <span class="status-badge badge-pending">En attente</span>
-                </div>
-                <div class="appointment-details">
-                    <p><i class="bi bi-person"></i> Dr. Sophie Moreau</p>
-                    <p><i class="bi bi-calendar-event"></i> Mercredi 17 mai 2023</p>
-                    <p><i class="bi bi-clock"></i> 10:00 - 10:30</p>
-                    <p><i class="bi bi-geo-alt"></i> Laboratoire d'analyses, 5 Av. des Champs</p>
-                </div>
-                <div class="appointment-actions">
-                    <button class="btn btn-primary">Confirmer</button>
-                    <button class="btn btn-outline">Reporter</button>
-                </div>
-            </div>
-
-            <!-- Cancelled Appointment 
-             <div class="status-card cancelled">
-                <div class="status-header">
-                    <div class="status-title">Consultation dentaire</div>
-                    <span class="status-badge badge-cancelled">Annulé</span>
-                </div>
-                <div class="appointment-details">
-                    <p><i class="bi bi-person"></i> Dr. Jean Petit</p>
-                    <p><i class="bi bi-calendar-event"></i> Vendredi 12 mai 2023</p>
-                    <p><i class="bi bi-clock"></i> 16:00 - 16:45</p>
-                    <p><i class="bi bi-geo-alt"></i> Cabinet dentaire, 22 Rue du Commerce</p>
-                </div>
-                <div class="appointment-actions">
-                    <button class="btn btn-outline">Voir détails</button>
-                    <button class="btn btn-primary">Reprendre RDV</button>
-                </div>
-            </div> -->
-        </div> 
-    </div>
 </div>
 
 <script>
@@ -471,7 +411,6 @@
         dropdown.classList.remove('active');
     });
 
-    // Prevent dropdown from closing when clicking inside it
     dropdown.addEventListener('click', (e) => {
         e.stopPropagation();
     });
