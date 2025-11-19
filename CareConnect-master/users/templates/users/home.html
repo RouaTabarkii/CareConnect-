@@ -1,19 +1,250 @@
-{% extends 'users/base.html' %}
-{% block content %}
-<div class="container text-center mt-5">
-    <h1 class="display-4 mb-4">Bienvenue sur CareConnect</h1>
-    <p class="lead mb-5">Votre plateforme pour connecter patients, médecins et psychologues.</p>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>CareConnect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .hero-section {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        color: white;
+        padding: 5rem 0;
+        margin: -2rem -1.5rem 4rem -1.5rem;
+        border-radius: 0 0 30px 30px;
+    }
+    .feature-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+    }
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .user-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: none;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+    .user-card:hover {
+        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    }
+    .btn-access {
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .btn-access:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
 
-    <div class="row justify-content-center g-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <i class="bi bi-heart-pulse me-2"></i>
+      CareConnect
+    </a>
     
-
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class="nav-item">
+          <a class="nav-link user-type-btn" href="{% url 'login_medecin' %}">
+            <i class="bi bi-person-badge me-1"></i>
+            Médecin
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link user-type-btn" href="{% url 'login_patient' %}">
+            <i class="bi bi-person me-1"></i>
+            Patient
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link user-type-btn" href="{% url 'login_psy' %}">
+            <i class="bi bi-person-square me-1"></i>
+            Psychologue
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-
-
-    <!--  Admin -->
-    <div class="mt-5">
-        <a href="/admin/" class="btn btn-dark btn-lg">Espace Administrateur</a>
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Bienvenue sur CareConnect</h1>
+        <p class="lead mb-4 fs-5">Votre plateforme médicale complète pour connecter patients, médecins et psychologues</p>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{% url 'login_medecin' %}" class="btn btn-light btn-lg btn-access">
+                        <i class="bi bi-person-badge me-2"></i>Espace Médecin
+                    </a>
+                    <a href="{% url 'login_patient' %}" class="btn btn-outline-light btn-lg btn-access">
+                        <i class="bi bi-person me-2"></i>Espace Patient
+                    </a>
+                    <a href="{% url 'login_psy' %}" class="btn btn-outline-light btn-lg btn-access">
+                        <i class="bi bi-person-square me-2"></i>Espace Psychologue
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{% endblock %}
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Features Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold">Pourquoi choisir CareConnect ?</h2>
+            <p class="text-muted">Une plateforme complète dédiée à votre santé</p>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon text-primary">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h4 class="card-title">Gestion de RDV</h4>
+                    <p class="card-text text-muted">
+                        Prenez et gérez vos rendez-vous facilement en ligne avec un système intuitif et sécurisé.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon text-success">
+                        <i class="bi bi-file-earmark-medical"></i>
+                    </div>
+                    <h4 class="card-title">Dossiers Médicaux</h4>
+                    <p class="card-text text-muted">
+                        Accédez à vos documents de santé en toute sécurité et partagez-les avec vos praticiens.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon text-info">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h4 class="card-title">Suivi Personnalisé</h4>
+                    <p class="card-text text-muted">
+                        Bénéficiez d'un accompagnement personnalisé par des professionnels de santé qualifiés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Types Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold">Accédez à votre espace</h2>
+            <p class="text-muted">Choisissez votre profil pour vous connecter</p>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="user-card">
+                <div class="text-primary mb-3">
+                    <i class="bi bi-person-badge" style="font-size: 3rem;"></i>
+                </div>
+                <h4>Médecin</h4>
+                <p class="text-muted mb-3">
+                    Gérez vos patients, rendez-vous et dossiers médicaux en toute simplicité.
+                </p>
+                <a href="{% url 'login_medecin' %}" class="btn btn-primary btn-access">
+                    Accéder <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="user-card">
+                <div class="text-success mb-3">
+                    <i class="bi bi-person" style="font-size: 3rem;"></i>
+                </div>
+                <h4>Patient</h4>
+                <p class="text-muted mb-3">
+                    Consultez vos rendez-vous, documents et suivez votre santé au quotidien.
+                </p>
+                <a href="{% url 'login_patient' %}" class="btn btn-success btn-access">
+                    Accéder <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="user-card">
+                <div class="text-warning mb-3">
+                    <i class="bi bi-person-square" style="font-size: 3rem;"></i>
+                </div>
+                <h4>Psychologue</h4>
+                <p class="text-muted mb-3">
+                    Suivez vos patients et organisez vos séances de thérapie en ligne.
+                </p>
+                <a href="{% url 'login_psy' %}" class="btn btn-warning text-white btn-access">
+                    Accéder <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Section -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 text-center">
+            <div class="card border-dark">
+                <div class="card-body py-4">
+                    <i class="bi bi-gear-fill text-dark" style="font-size: 2.5rem;"></i>
+                    <h4 class="card-title mt-3">Espace Administrateur</h4>
+                    <p class="card-text text-muted mb-3">
+                        Gestion de la plateforme et administration du système
+                    </p>
+                    <a href="/admin/" class="btn btn-dark btn-lg btn-access">
+                        <i class="bi bi-shield-lock me-2"></i>Accéder à l'admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light mt-5 py-4 border-top">
+  <div class="container text-center">
+    <p class="text-muted mb-0">&copy; 2024 CareConnect. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
