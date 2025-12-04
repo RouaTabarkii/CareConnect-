@@ -145,5 +145,14 @@ LOGGING={
 }
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # media directory in the root directory
-MEDIA_URL = '/media/'
+STATIC_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = STATIC_ROOT / 'fichiers'
+MEDIA_URL = '/fichiers/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tbarki12344@gmail.com'
+EMAIL_HOST_PASSWORD = 'uzbi cdvn nytw cxaj'

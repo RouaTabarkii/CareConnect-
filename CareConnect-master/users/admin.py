@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import patient_insc,psy_insc,RDV, ConfPsy
+from .models import patient_insc,psy_insc,RDV, ConfPsy, emp_auth
 
 # Register your models here.
 
 
 admin.site.register(patient_insc)
-# admin.site.register(emp_auth)
+admin.site.register(emp_auth)
 admin.site.register(psy_insc)
 admin.site.register(RDV)
 admin.site.register(ConfPsy)

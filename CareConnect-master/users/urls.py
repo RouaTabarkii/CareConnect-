@@ -14,8 +14,14 @@ urlpatterns = [
     path('register/psy',views.register_psy,name='register_psy'),
     path('RDV/patient/' ,views.My_RDV, name='RDV_patient'),
     path('DOC/patient',views.doc_patient,name='doc_patient'),
-    path('Compte/patient/',views.compte_patient,name='Compte_patient')
+    path('Compte/patient/',views.compte_patient,name='Compte_patient'),
+    path('interface/psy/', views.Interface_psy, name='Interface_psy'),
+    path('logout/patient/', views.logout_patient,name='logout_patient'),
+    path('conf/', views.ConfRDV, name='confrvd'),
+    path('logout/psy/', views.logout_psy, name='logout_psy'),
 
+    path('conf/<int:rdv_id>/', views.ConfRendezVous, name='conffRDV'),
+    path('ref/<int:rdv_id>/' , views.RefRDV , name='refRdv'),
 
 ]
 
