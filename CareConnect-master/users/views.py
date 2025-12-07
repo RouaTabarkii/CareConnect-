@@ -131,13 +131,15 @@ def My_RDV(request):
     if request.method == "POST":
         selected = request.POST.get('choix')
         datee = request.POST.get('date')
+        emaill = request.POST.get('email')  
+
         form = RDV_form(request.POST)
         if form.is_valid():
-            rdv= RDV()
+            rdv= form.save(commit = False)
             rdv.DocName = selected  
             rdv.date = datee
+            rdv.email = emaill
             rdv.save()
-            form.save()
             return redirect('RDV_patient')
     else:
 
@@ -165,7 +167,7 @@ def ConfRendezVous(request, rdv_id) :
 
         send_mail(
                 subject= "Confirmation de RDV",
-                message = f"Votre rendez-vous avec est confirmé le {Conf_date}",
+                message = f"Votre rendez-vous avec {Conf_Doc}  est confirmé le {Conf_date} Cordialement",
                 from_email= "CareConnect <tbarki12344@gmail.com>",
                 recipient_list= [rdv.email],
                 fail_silently=False,
@@ -173,7 +175,6 @@ def ConfRendezVous(request, rdv_id) :
 
             )
         DRDV = RDV.objects.get(id=rdv_id)
-        DRDV.delete()
 
 
         
@@ -184,11 +185,12 @@ def ConfRendezVous(request, rdv_id) :
 def RefRDV(request , rdv_id) :
             rdvs = RDV.objects.all()
             rdv = RDV.objects.get(id=rdv_id) 
-
+            Conf_Doc = rdv.DocName
+            Site = "http://careconnect.com/"
 
             send_mail(
                 subject= "Annulation de RDV" ,
-                message= "La date que vous avez choisit n'est pas disponible vous devez accéder a notre site web et choisissez un autre RDV",
+                message= f"La date que vous avez choisie pour un rendez-vous avec {Conf_Doc} n’est pas disponible. Nous vous invitons à accéder à notre site web {Site} afin de sélectionner un autre créneau de rendez-vous.",
             
                 from_email= "CareConnect <tbarki12344@gmail.com>",
                 recipient_list= [rdv.email],
@@ -197,7 +199,6 @@ def RefRDV(request , rdv_id) :
 
             )
             DRDV = RDV.objects.get(id=rdv_id)
-            DRDV.delete()
             return render (request , 'users/conf_rdv.html',{'rdvs' : rdvs})
 
 

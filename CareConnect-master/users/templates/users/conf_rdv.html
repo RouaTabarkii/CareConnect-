@@ -64,27 +64,30 @@
             <div class="stats-label">Rendez-vous au total</div>
         </div>
 
-        <div class="appointments-container">
-            {% if rdvs %}
-                {% for rdv in rdvs %}
-                    <div class="appointment-card">
-                        <div class="appointment-header">
-                            <div class="appointment-date">
-                                <i class="bi bi-calendar-event"></i>
-                                {{ rdv.date }}
-                            </div>
-                            <div class="appointment-email">
-                                <i class="bi bi-envelope"></i>
-                                {{ rdv.email }}
-                            </div>
-                        </div>
-                        <div class="appointment-actions">
-                            <div class="appointment-id">
-                                RDV: {{ forloop.counter }}
-                            </div>
-                            <div class="action-buttons">
-
-<a href="{% url 'conffRDV' rdv.id %}">
+<div class="appointments-container">
+    {% if rdvs %}
+        {% for rdv in rdvs %}
+            <div class="appointment-card">
+                <div class="appointment-header">
+                    <div class="appointment-name">
+                        <i class="bi bi-person"></i>
+                        {{ rdv.DocName }}
+                    </div>
+                    <div class="appointment-date">
+                        <i class="bi bi-calendar-event"></i>
+                        {{ rdv.date }}
+                    </div>
+                    <div class="appointment-email">
+                        <i class="bi bi-envelope"></i>
+                        {{ rdv.email }}
+                    </div>
+                </div>
+                <div class="appointment-actions">
+                    <div class="appointment-id">
+                        RDV: {{ forloop.counter }}
+                    </div>
+                    <div class="action-buttons">
+<a href="{% url 'conffRDV' rdv.id  %}">
     <button class="btn-confirm">Confirmer</button>
 </a>
 

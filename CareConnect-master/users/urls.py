@@ -19,7 +19,6 @@ urlpatterns = [
     path('logout/patient/', views.logout_patient,name='logout_patient'),
     path('conf/', views.ConfRDV, name='confrvd'),
     path('logout/psy/', views.logout_psy, name='logout_psy'),
-
     path('conf/<int:rdv_id>/', views.ConfRendezVous, name='conffRDV'),
     path('ref/<int:rdv_id>/' , views.RefRDV , name='refRdv'),
 
